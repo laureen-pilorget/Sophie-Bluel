@@ -1,5 +1,6 @@
 
 /******STYLE PAR DÉFAUT*******/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,30 +21,38 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -72,20 +81,18 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
@@ -95,13 +102,16 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -109,8 +119,9 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -118,10 +129,12 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -132,35 +145,45 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
-#contact {
+
+#contact,
+#login {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
-	text-align: center;
 
+#contact > *,
+#login > * {
+	text-align: center;
 }
-#contact h2{
+
+#contact h2,
+#login h2 {
 	margin-bottom: 20px;
 }
-#contact form {
+
+#contact form,
+#login form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,
+#login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+
+#contact label,
+#login label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -182,8 +205,6 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-
-
 
 /***** STYLE BUTTONS ******/
 
@@ -218,27 +239,17 @@ footer nav ul {
 }
 
 /******** STYLE PAGE LOGIN ********/
+
+#login h2 {
+	margin-top: 150px;
+}
+
+#login input[type="submit"] {
+	margin-top: 50px;
+}
+
 .login {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.login h2 {
-	margin-bottom: 20px;
-}
-
-.email,
-.password {
-	display: flex;
-	flex-direction: column;
-}
-
-.email {
-	margin-bottom: 15px;
-}
-
-
-.login p {
-	text-decoration: underline;
+	justify-content: center;
+	color: black;
 }
