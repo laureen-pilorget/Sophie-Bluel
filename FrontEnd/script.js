@@ -1,16 +1,15 @@
 const gallery = document.querySelector(".gallery")
-const filterButton = document.createElement('button');
 
 /// Créer la gallery//////
 
 
-function createGallery(works) {
-    works.forEach(work => {
+function createGallery(images) {
+    images.forEach(img => {
         const imageBox = document.createElement('figure');
         const image = document.createElement('img');
         const descriptionImg = document.createElement('figcaption');
-        image.src = work.imageUrl;
-        descriptionImg.textContent = work.title;
+        image.src = img.imageUrl;
+        descriptionImg.textContent = img.title;
         gallery.appendChild(imageBox);
         imageBox.append(image, descriptionImg);
     });
@@ -18,8 +17,7 @@ function createGallery(works) {
 
 fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
-    .then(works => createGallery(works)
-    );
+    .then(images => createGallery(images));
 
 
 
@@ -28,24 +26,36 @@ const filters = document.querySelector(".filters")
 
 function createFilterButtons(categories) {
     categories.forEach(category => {
+        const filterButton = document.createElement('button');
         filterButton.innerText = category.name;
         filters.appendChild(filterButton);
-
-
-        filterButton.addEventListener("click",() =>{
-            gallery.innerHTML="";
-            createGallery()
-            if (category.name===work.name);
+        /// ON FILTRE AU CLICK DES BUTTONS///
+        filterButton.addEventListener("click",() => {
+            createFilterImg(category.name);
         })
     });
 } 
+
+//Execution de la fonction pour les buttons//
 
 fetch("http://localhost:5678/api/categories")
     .then(reponse => reponse.json()) 
     .then(categories => createFilterButtons(categories)
     );
 
+/// CREATION DES FILTRES///
 
-function trier(createFilterButtons,createGallery) {
-    if (work.name === )
+function createFilterImg(categoryName) {
+    fetch("http://localhost:5678/api/works")
+        .then(reponse => reponse.json())
+        .then(images => {
+            const filtersImages = images.filter (img => img.category.name === categoryName);
+            gallery.innerHTML = "";
+            createGallery(filtersImages);
+            const buttonForAllImages = document.querySelector(".allImages")
+            buttonForAllImages.addEventListener("click",() => {
+                gallery.innerHTML = "";
+                createGallery(images)
+            })
+        })
 }
