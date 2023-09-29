@@ -185,7 +185,7 @@ footer nav ul {
 
 
 
-/*****style buttons******/
+/***** STYLE BUTTONS ******/
 
 .filters {
 	width: 50%;
@@ -215,4 +215,30 @@ footer nav ul {
 .filters button:focus {
 	background-color: #1D6154;
 	color: white;
+}
+
+/******** STYLE PAGE LOGIN ********/
+.login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login h2 {
+	margin-bottom: 20px;
+}
+
+.email,
+.password {
+	display: flex;
+	flex-direction: column;
+}
+
+.email {
+	margin-bottom: 15px;
+}
+
+
+.login p {
+	text-decoration: underline;
 }

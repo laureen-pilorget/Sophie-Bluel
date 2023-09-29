@@ -1,6 +1,6 @@
 const gallery = document.querySelector(".gallery")
 
-/// Créer la gallery//////
+/// CRÉATION DE LA GALLERY ///
 
 
 function createGallery(images) {
@@ -21,7 +21,7 @@ fetch("http://localhost:5678/api/works")
 
 
 
-////// Créer les boutons//////
+/// CRÉATION DES BUTTONS ///
 const filters = document.querySelector(".filters")
 
 function createFilterButtons(categories) {
@@ -36,14 +36,14 @@ function createFilterButtons(categories) {
     });
 } 
 
-//Execution de la fonction pour les buttons//
+/// EXÉCUTION DE LA FONCTION POUR LES BUTTONS ///
 
 fetch("http://localhost:5678/api/categories")
     .then(reponse => reponse.json()) 
     .then(categories => createFilterButtons(categories)
     );
 
-/// CREATION DES FILTRES///
+/// CRÉATION DES FILTRES ///
 
 function createFilterImg(categoryName) {
     fetch("http://localhost:5678/api/works")
