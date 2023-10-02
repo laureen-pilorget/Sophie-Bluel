@@ -7,18 +7,26 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="script.js" defer></script>
 </head>
+
 <body>
+<aside class="edit hidden">
+	<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
+</aside>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
 	<nav>
 		<ul>
 			<li><a href="#portfolio">projets</a></li>
 			<li><a href="#contact">contact</a></li>
-			<li><a href="#login">login</a></li>
+			<li class="login"><a href="login.HTML">login</a></li>
+			<li class="logout hidden"><a href="login.HTML">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,7 +44,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes Projets <button class="modify-button hidden"><i class="fa-regular fa-pen-to-square"></i>modifier</button></h2>
 		<div class="filters">
 			<button class="allImages">Tous</button>
 		</div>
@@ -63,7 +71,7 @@
 	</section>
 </main>
 
-<footer>
+<footer class="index-footer">
 	<nav>
 		<ul>
 			<li>Mentions Légales</li>
