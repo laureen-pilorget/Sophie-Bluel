@@ -59,3 +59,28 @@ function createFilterImg(categoryName) {
             })
         })
 }
+
+/// EDIT PAGE ///
+
+console.log(localStorage.getItem("token"));
+
+//const editMode = document.querySelectorAll(".hidden");
+const editMode = document.querySelector(".edit")
+const login = document.querySelector(".login")
+const modify = document.querySelector(".modify-button")
+const userLogin = document.querySelector(".login");
+const userToken = localStorage.getItem("token");
+
+
+editMode.style.display = "block";
+login.style.display = "block";
+modify.style.display = "inline-block";
+userLogin.style.display = "none";
+
+/// LOGOUT ///
+
+const userLogout = document.querySelector(".logout")
+
+userLogout.addEventListener("click", () => {
+    localStorage.clear();
+})
