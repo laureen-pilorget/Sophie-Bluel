@@ -19,8 +19,6 @@ fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
     .then(images => createGallery(images));
 
-
-
 /// CRÉATION DES BUTTONS ///
 const filters = document.querySelector(".filters")
 
@@ -62,7 +60,7 @@ function createFilterImg(categoryName) {
 
 /// EDIT PAGE ///
 
-console.log(localStorage.getItem("token"));
+///console.log(localStorage.getItem("token"));
 
 //const editMode = document.querySelectorAll(".hidden");
 const editMode = document.querySelector(".edit")
@@ -84,3 +82,22 @@ const userLogout = document.querySelector(".logout")
 userLogout.addEventListener("click", () => {
     localStorage.clear();
 })
+
+
+/// GALLERY MODAL ///
+
+/*const galleryModal = document.querySelector(".gallery-modal");
+
+function createGalleryModal(images) {
+    images.forEach(img => {
+        const imageBox = document.createElement('figure');
+        const image = document.createElement('img');
+        image.src = img.imageUrl;
+        galleryModal.appendChild(imageBox);
+        imageBox.append(image);
+    });
+} 
+
+fetch("http://localhost:5678/api/works")
+    .then(reponse => reponse.json()) 
+    .then(images => createGallery(images));*/
