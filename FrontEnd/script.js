@@ -1,7 +1,7 @@
-const gallery = document.querySelector(".gallery")
 
 /// CRÉATION DE LA GALLERY ///
 
+const gallery = document.querySelector(".gallery")
 
 function createGallery(images) {
     images.forEach(img => {
@@ -18,6 +18,7 @@ function createGallery(images) {
 fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
     .then(images => createGallery(images));
+
 
 /// CRÉATION DES BUTTONS ///
 const filters = document.querySelector(".filters")
@@ -86,18 +87,44 @@ userLogout.addEventListener("click", () => {
 
 /// GALLERY MODAL ///
 
-/*const galleryModal = document.querySelector(".gallery-modal");
+
+    /// IMPORTER LES IMAGES DE LA GALLERY DANS LA MODALE ///
+
+const galleryModal = document.querySelector(".figure-modal");
 
 function createGalleryModal(images) {
     images.forEach(img => {
         const imageBox = document.createElement('figure');
         const image = document.createElement('img');
+        const descriptionImg = document.createElement('figcaption');
+        const trash = document.createElement('i');
         image.src = img.imageUrl;
-        galleryModal.appendChild(imageBox);
-        imageBox.append(image);
+        trash.classList.add("fa-solid","fa-trash-can");
+        imageBox.append(image, descriptionImg);
+        galleryModal.appendChild(imageBox, descriptionImg);
+        descriptionImg.appendChild(trash);
+
     });
 } 
 
 fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
-    .then(images => createGallery(images));*/
+    .then(images => createGalleryModal(images));
+
+
+    /// OUVRIR LA MODALE AU CLICK ///
+
+const modal1 = document.querySelector("#modal1");
+
+modify.addEventListener("click", () => {
+    modal1.style.display = "flex";
+})
+
+
+    /// FERMER LA MODALE AU CLICK ///
+
+const close = document.querySelector(".fa-xmark");
+
+close.addEventListener("click", () => {
+    modal1.style.display = "none";
+})

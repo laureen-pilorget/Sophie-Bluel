@@ -311,22 +311,23 @@ main {
 
 /***** STYLE MODALE GALLERY *****/
 
-#modal * {
+#modal1 * {
 	column-gap: 10px;
 	row-gap: 20px;
 }
 
-#modal {
+#modal1 {
 	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: auto;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.8);
-	/*display: none;*/
+	display: none;
 }
 
 .gallery-modal {
@@ -342,7 +343,6 @@ main {
 }
 
 .figure-modal {
-	z-index: 3;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 10px;
@@ -371,10 +371,9 @@ h3 {
 	padding: 20px;
 }
 
-#modal img {
+.figure-modal img {
 	width: 100%;
 	position: relative;
-	
 }
 
 .figure-modal {
@@ -395,7 +394,6 @@ figcaption {
 
 .figure-modal i {
 	position: absolute;
-	z-index: 5;
 	justify-content: flex-end;
 	top: -90px;
 	right: 6px;
