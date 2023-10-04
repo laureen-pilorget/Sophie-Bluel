@@ -69,6 +69,7 @@ const login = document.querySelector(".login")
 const modify = document.querySelector(".modify-button")
 const userLogin = document.querySelector(".login");
 const userToken = localStorage.getItem("token");
+//console.log(localStorage.getItem(userId));
 
 
 editMode.style.display = "block";
@@ -100,10 +101,15 @@ function createGalleryModal(images) {
         const trash = document.createElement('i');
         image.src = img.imageUrl;
         trash.classList.add("fa-solid","fa-trash-can");
+        trash.dataset.imageId= img.id;
         imageBox.append(image, descriptionImg);
         galleryModal.appendChild(imageBox, descriptionImg);
         descriptionImg.appendChild(trash);
-
+            /// supprimer les images dans la gallery au click ///
+        trash.addEventListener("click", () => {
+            imageBox.remove
+            removeFigure(img.id);
+        })
     });
 } 
 
@@ -128,3 +134,30 @@ const close = document.querySelector(".fa-xmark");
 close.addEventListener("click", () => {
     modal1.style.display = "none";
 })
+
+
+    /// SUPPRIMER UNE IMAGE AU CLICK ///
+function removeFigure(imgId){
+    fetch(`http://localhost:5678/api/works/${imgId}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${userToken}` 
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            updateGalleryAfterDeletion(imageId);
+        }
+    })
+}
+
+function updateGalleryAfterDeletion(deletedImageId) {
+    const galleryAllImg = gallery.querySelectorAll("figure");
+    galleryAllImg.forEach(image => {
+        const idImg = image.querySelectorAll("img").dataset.idImg;
+        if (idImg == deletedImageId) {
+            image.remove();
+        }
+    });
+}
