@@ -16,9 +16,10 @@
 </head>
 
 <body>
-<aside class="edit hidden">
+<div class="outside"></div>
+<div class="edit hidden">
 	<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
-</aside>
+</div>
 <header>
 	<h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
 	<nav>
@@ -27,7 +28,7 @@
 			<li><a href="#contact">contact</a></li>
 			<li class="login"><a href="login.HTML">login</a></li>
 			<li class="logout hidden"><a href="login.HTML">logout</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><a href="#"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
 		</ul>
 	</nav>
 </header>
@@ -61,53 +62,43 @@
 			<i class="fa-solid fa-xmark"></i>
 			<h3>Galerie photo </h3>
 			<div class="figure-modal">
-				<!--<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
+			<!-- Ici on va ajouter nos images grace à notre API et javascript
 				<figure>
 					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
 				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption><i class= "delete-img fa-solid fa-trash-can"></i></figcaption>
-				</figure>-->
+			-->
 			</div>
 			<div class="border"></div>
-			<input class="addImage" type="submit" value="Ajouter une photo">
+			<input class="addImage" type="submit" value="Ajouter une photo"/>
+		</div>
+	</section>
+	<section id="modal2">
+		<div class="add-photo-modal">
+			<div class="icone">
+				<i class="fa-solid fa-arrow-left"></i>
+				<i class="fa-solid fa-xmark close-modal2"></i>
+			</div>
+			<h3>Ajout photo </h3>
+			<form method="post" action="#" id="form">
+				<div class="form">
+					<div class="blue-rectangle">
+						<i class="fa-regular fa-image"></i>
+						<div class="imgAdded">
+							<!-- créer en JS-->
+						</div>
+						<label for="img-upload" class="new-img-button">+ Ajouter photo</label>
+						<input type="file" id="img-upload" accept="image/"/>
+						<p class="paragraph">jpg, png : 4mo max</p>
+					</div>
+					<label for="title">Titre</label>
+            		<input type="text" name="title" id="title"/>
+					<label for="category">Catégorie</label>	
+					<select name="category" id="category"></select>
+				</div>
+				<div class="border"></div>
+				<input class="validate" type="submit" value="Valider">
+			</form>
 		</div>
 	</section>
 	<section id="contact">
