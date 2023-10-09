@@ -72,6 +72,7 @@ function createFilterImg(categoryName) {
 }
 
 
+
 /// EDIT PAGE ///
 
     /// PASSER LA PAGE D'ACCUEIL EN MODE ÉDITION ///
@@ -105,95 +106,41 @@ userLogout.addEventListener("click", () => {
 })
 
 
-/// MODALE DE SUPPRESSION IMAGES ///
 
-    /// IMPORTER LES IMAGES DE LA GALLERY DANS LA MODALE ///
+/// MODALES ///
 
-const galleryModal = document.querySelector(".figure-modal");
-
-function createGalleryModal(images) {
-    images.forEach(img => {
-        const imageBox = document.createElement('figure');
-        const image = document.createElement('img');
-        const descriptionImg = document.createElement('figcaption');
-        const trash = document.createElement('i');
-        image.src = img.imageUrl;
-        trash.classList.add("fa-solid","fa-trash-can");
-        imageBox.append(image, descriptionImg);
-        galleryModal.appendChild(imageBox, descriptionImg);
-        descriptionImg.appendChild(trash);
-            /// SUPPRIMER LES IMAGES DANS LA GALLERY AU CLICK ///
-        trash.addEventListener("click", () => {
-            imageBox.remove;
-            removeFigure(img.id, imageBox);
-            alert("Vous avez bien supprimé votre fichier");
-            window.location.href = 'index.html';
-        })
-        
-    });
-}
-  /// SUPPRIMER UNE IMAGE CÔTÉ BACKEND AU CLICK ///
-
-function removeFigure(imgId, imageBox){
-    fetch(`http://localhost:5678/api/works/${imgId}`, {
-        method: 'DELETE',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${userToken}` 
-        },
-    })
-    .then(response => response.ok)
-    .catch(error => console.error("Erreur : Aucune réponse de l'API (POST api/works/ID) lors de la suppression de l'image", error));
-}
-
-fetch("http://localhost:5678/api/works")
-    .then(reponse => reponse.json()) 
-    .then(images => createGalleryModal(images))
-    .catch(error => {
-        console.error("Erreur lors de la récupération des données :", error);
-    });
-
-
-    /// OUVRIR LA MODALE AU CLICK /// 
+    /// OUVERTURE DES MODALES AU CLICK /// 
 
 const modal1 = document.querySelector("#modal1");
-const backgroundModal = document.querySelector(".outside");
+const modal2 = document.getElementById("modal2");
+const addImgModal1 = document.querySelector(".addImage");
 
+            /// MODALE 1 ///
 modify.addEventListener("click", () => {
     modal1.style.display = "flex";
-    backgroundModal.style.display = "block";
+})
+
+            /// MODALE 2 ///
+
+addImgModal1.addEventListener("click", () => {
+    modal2.style.display = "flex";
+    modal1.style.display = "none";
 })
 
 
-    /// FERMER LA MODALE AU CLICK ///
+    /// FERMETURE DES MODALES AU CLICK SUR LA CROIX///
 
 const closeModal1 = document.querySelector(".fa-xmark");
+const closeModal2 = document.querySelector(".close-modal2");
+
+            /// MODALE 1 ///
 
 closeModal1.addEventListener("click", () => {
     modal1.style.display = "none";
     backgroundModal.style.display = "none";
 })
 
-
-  
-
-/// MODALE D'AJOUT IMAGES///
-
-    /// OUVRIR LA MODALE AU CLICK ///
-
-const modal2 = document.getElementById("modal2");
-const addImgModal1 = document.querySelector(".addImage");
-
-addImgModal1.addEventListener("click", () => {
-    modal2.style.display = "flex";
-    modal1.style.display = "none";
-    backgroundModal.style.display = "block";
-})
-
-
-    /// FERMER LA MODALE AU CLICK SUR LA CROIX ///
-
-const closeModal2 = document.querySelector(".close-modal2");
+            /// MODALE 2 ///
 
 closeModal2.addEventListener("click", () => {
     modal2.style.display = "none";
@@ -210,6 +157,87 @@ returnModal1.addEventListener("click", () => {
     modal1.style.display = "flex";
 })
 
+
+    /// FERMETURE DES MODALES AU CLICK À L'EXTÉRIEUR DES MODALES ///
+
+const galleryModal = document.querySelector("#modal1 .gallery-modal");
+const addPhotoModal = document.querySelector("#modal2 .add-photo-modal");
+
+            /// MODALE 1 ///
+
+modal1.addEventListener('click', () =>{
+    modal1.style.display = "none";
+})
+
+galleryModal.addEventListener('click', (e) =>{
+    e.stopPropagation()
+})
+
+            /// MODALE 2 ///
+
+modal2.addEventListener('click', () =>{
+    modal2.style.display = "none";
+})
+
+addPhotoModal.addEventListener('click', (e) =>{
+    e.stopPropagation()
+})
+
+
+
+/// MODALE DE SUPPRESSION IMAGES ///
+
+    /// IMPORTER LES IMAGES DE LA GALLERY DANS LA MODALE ///
+
+const figureModal = document.querySelector(".figure-modal");
+
+function createGalleryModal(images) {
+    images.forEach(img => {
+        const imageBox = document.createElement('figure');
+        const image = document.createElement('img');
+        const descriptionImg = document.createElement('figcaption');
+        const trash = document.createElement('i');
+        image.src = img.imageUrl;
+        trash.classList.add("fa-solid","fa-trash-can");
+        imageBox.append(image, descriptionImg);
+        figureModal.appendChild(imageBox, descriptionImg);
+        descriptionImg.appendChild(trash);
+            /// SUPPRIMER LES IMAGES DANS LA GALLERY AU CLICK ///
+        trash.addEventListener("click", () => {
+            imageBox.remove;
+            removeFigure(img.id, imageBox);
+            alert("Vous avez bien supprimé votre fichier");
+            window.location.href = 'index.html';
+        })
+        
+    });
+}
+
+fetch("http://localhost:5678/api/works")
+    .then(reponse => reponse.json()) 
+    .then(images => createGalleryModal(images))
+    .catch(error => {
+        console.error("Erreur lors de la récupération des données :", error);
+    });
+
+
+  /// SUPPRIMER UNE IMAGE CÔTÉ BACKEND AU CLICK ///
+
+function removeFigure(imgId, imageBox){
+    fetch(`http://localhost:5678/api/works/${imgId}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${userToken}` 
+        },
+    })
+    .then(response => response.ok)
+    .catch(error => console.error("Erreur : Aucune réponse de l'API (POST api/works/ID) lors de la suppression de l'image", error));
+}
+
+ 
+
+/// MODALE D'AJOUT IMAGES///
 
     /// RÉCUPÉRER L'IMAGE AJOUTÉE ET LA METTRE DANS LA MODALE2 ///
 
@@ -232,10 +260,11 @@ imgUpload.addEventListener('change', function () {
         buttonAddImg.style.display = "none";
         paragraph.style.display = "none";
     }
-}); 
+})
 
 
     /// RÉCUPÉRER LES CATÉGORIES DE L'API ///
+
 const selectCategory = document.querySelector("#category");
 
 function createOptionCategories(categories) {
@@ -254,11 +283,7 @@ fetch("http://localhost:5678/api/categories")
     })
     .catch(error => {
         console.error("Erreur lors de la récupération des données :", error);
-    });
-
-
-
-
+    })
 
 
     /// RÉCUPÉRER TOUTES LES INFORMATIONS DU FORMULMAIRE ///
@@ -313,22 +338,3 @@ function changeColorSubmitButton () {
 
 inputImg.addEventListener("input", changeColorSubmitButton);
 inputTitle.addEventListener("input", changeColorSubmitButton);
-
-
-
-// /// FERMER LES MODALES AU CLICK À L'EXTÉRIEUR DES MODALES ///
-// //     /// FERMER LA MODALE AU CLICK EN DEHORS DE LA MODALE ///
-// // const insideModal2 = document.querySelector(".add-photo-modal");
-// const outsideModal = document.querySelector(".outside");
-
-backgroundModal.addEventListener('click', () =>{
-    modal1.style.display = "none";
-    modal2.style.display = "none";
-})
-
-//     outsideModal.addEventListener('click', (event) => {
-//         if (event.target != modal1 && modal2) {
-//           modal2.style.display = "none";
-//           modal1.style.display = "none";
-//         }
-//       });

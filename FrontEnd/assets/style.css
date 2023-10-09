@@ -155,6 +155,7 @@ li img:hover {
 .gallery img {
 	width: 100%;
 	height: 100%;
+	object-fit: cover;
 }
 
 #contact,
@@ -317,15 +318,6 @@ body {
 	z-index: 1;
 }
 
-.outside {
-	position: fixed;
-	z-index: 2;
-	background: rgba(0, 0, 0, 0.8);
-	width: 100%;
-	height: 100%;
-	display: none;
-}
-
 #modal1 *,
 #modal2 * {
 	column-gap: 10px;
@@ -345,6 +337,7 @@ body {
 	height: 100%;
 	display: none;
 	z-index: 3;
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .gallery-modal,
@@ -396,8 +389,10 @@ h3 {
 }
 
 .figure-modal img {
+	min-height: 97px;
 	width: 100%;
 	height: 100%;
+	object-fit: cover;
 }
 
 .border {
