@@ -18,7 +18,10 @@ function createGallery(images) {
 
 fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
-    .then(images => createGallery(images));
+    .then(images => createGallery(images))
+    .catch(error => {
+        console.error("Erreur lors de la récupération des données :", error);
+    });
 
 
     /// CRÉATION DES BUTTONS ///
@@ -42,8 +45,10 @@ function createFilterButtons(categories) {
 
 fetch("http://localhost:5678/api/categories")
     .then(reponse => reponse.json()) 
-    .then(categories => createFilterButtons(categories)
-    );
+    .then(categories => createFilterButtons(categories))
+    .catch(error => {
+        console.error("Erreur lors de la récupération des données :", error);
+    });
 
 
     /// CRÉATION DES FILTRES ///
@@ -61,6 +66,9 @@ function createFilterImg(categoryName) {
                 createGallery(images)
             })
         })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des données :", error);
+        });
 }
 
 
@@ -140,15 +148,20 @@ function removeFigure(imgId, imageBox){
 
 fetch("http://localhost:5678/api/works")
     .then(reponse => reponse.json()) 
-    .then(images => createGalleryModal(images));
+    .then(images => createGalleryModal(images))
+    .catch(error => {
+        console.error("Erreur lors de la récupération des données :", error);
+    });
 
 
     /// OUVRIR LA MODALE AU CLICK /// 
 
 const modal1 = document.querySelector("#modal1");
+const backgroundModal = document.querySelector(".outside");
 
 modify.addEventListener("click", () => {
     modal1.style.display = "flex";
+    backgroundModal.style.display = "block";
 })
 
 
@@ -158,6 +171,7 @@ const closeModal1 = document.querySelector(".fa-xmark");
 
 closeModal1.addEventListener("click", () => {
     modal1.style.display = "none";
+    backgroundModal.style.display = "none";
 })
 
 
@@ -173,6 +187,7 @@ const addImgModal1 = document.querySelector(".addImage");
 addImgModal1.addEventListener("click", () => {
     modal2.style.display = "flex";
     modal1.style.display = "none";
+    backgroundModal.style.display = "block";
 })
 
 
@@ -182,6 +197,7 @@ const closeModal2 = document.querySelector(".close-modal2");
 
 closeModal2.addEventListener("click", () => {
     modal2.style.display = "none";
+    backgroundModal.style.display = "none";
 })
 
 
@@ -235,6 +251,9 @@ fetch("http://localhost:5678/api/categories")
     .then(reponse => reponse.json()) 
     .then(categories => {
         createOptionCategories(categories)
+    })
+    .catch(error => {
+        console.error("Erreur lors de la récupération des données :", error);
     });
 
 
@@ -276,9 +295,6 @@ form.addEventListener('submit', async (e) => {
         .catch(error => {
             console.error("Erreur lors de l'envoi des données :", error);
         });
-// Vous pouvez rediriger l'utilisateur ou effectuer d'autres actions ici
-        //     } else {
-        //       alert("Une erreur s'est produite lors de l'envoi des données.");
 });
 
 
@@ -300,68 +316,19 @@ inputTitle.addEventListener("input", changeColorSubmitButton);
 
 
 
-/// FERMER LES MODALES AU CLICK À L'EXTÉRIEUR DES MODALES ///
-//     /// FERMER LA MODALE AU CLICK EN DEHORS DE LA MODALE ///
-// const insideModal2 = document.querySelector(".add-photo-modal");
-const outsideModal = document.querySelector("section");
+// /// FERMER LES MODALES AU CLICK À L'EXTÉRIEUR DES MODALES ///
+// //     /// FERMER LA MODALE AU CLICK EN DEHORS DE LA MODALE ///
+// // const insideModal2 = document.querySelector(".add-photo-modal");
+// const outsideModal = document.querySelector(".outside");
 
-outsideModal.addEventListener('click', () =>{
+backgroundModal.addEventListener('click', () =>{
     modal1.style.display = "none";
     modal2.style.display = "none";
 })
 
-//     window.addEventListener('click', (event) => {
-//         if (event.target != insideModal2) {
+//     outsideModal.addEventListener('click', (event) => {
+//         if (event.target != modal1 && modal2) {
 //           modal2.style.display = "none";
+//           modal1.style.display = "none";
 //         }
 //       });
-
-
-
-
-
-
-    /// REMPLIR LES CHAMPS DU FORMULMAIRE ///
-
-/// CORRESPOND AUX SCHÉMAS DE VALIDATION ///
-
-// const form = document.getElementById('login');
-// form.addEventListener('submit', function (e) {
-//     e.preventDefault();
-//     const email = document.querySelector('#email').value;
-//     const password = document.querySelector('#password').value;
-//     const data = { email: email, password: password };
-
-
-
-//     fetch('http://localhost:5678/api/users/login', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//         .then(response => response.json())
-//         .then(responseData => {
-//             if (responseData && responseData.token) {
-//                 localStorage.setItem('token', responseData.token);
-//                 window.location.href = 'index.html';
-//             } else {
-//                 alert("L'authentification a échoué. Vérifiez votre e-mail et votre mot de passe.");
-//             }
-//         });
-// });
-
-
-
-
-
-
-
-/// À LA FERMETURE DE LA MODALE REFAIRE UN 'GET WORKS' POUR QUE LA PAGE S'ACTUALISE AVEC LA NOUVELLE IMAGE ///
-
-
-
-
-
-    
