@@ -233,6 +233,7 @@ footer nav ul {
 	display: flex;
 	justify-content: space-between;
 	gap: 1em;
+	margin-bottom: 50px;
 }
 
 .filters button{
