@@ -10,6 +10,7 @@ function createGallery(images) {
         const image = document.createElement('img');
         const descriptionImg = document.createElement('figcaption');
         image.src = img.imageUrl;
+        imageBox.id = img.id
         descriptionImg.textContent = img.title;
         gallery.appendChild(imageBox);
         imageBox.append(image, descriptionImg);
@@ -78,22 +79,21 @@ function createFilterImg(categoryName) {
     /// PASSER LA PAGE D'ACCUEIL EN MODE ÉDITION ///
 
 const editMode = document.querySelector(".edit")
-const login = document.querySelector(".login")
 const modify = document.querySelector(".modify-button")
 const userLogin = document.querySelector(".login");
 const userToken = localStorage.getItem("token");
-const userLogout = document.querySelector(".logout")
+const userLogout = document.querySelector(".logout");
+const selectCategories = document.querySelector(".filters");
 
 if(userToken !== null) { 
     editMode.style.display = "block";
-    login.style.display = "block";
     modify.style.display = "inline-block";
     userLogin.style.display = "none";
+    selectCategories.style.display = "none";
 }else {
     editMode.style.display = "none";
     modify.style.display = "none";
     userLogin.style.display = "block";
-    login.style.display = "block";
     userLogout.style.display = "none";
 }
 
@@ -204,13 +204,12 @@ function createGalleryModal(images) {
         descriptionImg.appendChild(trash);
             /// SUPPRIMER LES IMAGES DANS LA GALLERY AU CLICK ///
         trash.addEventListener("click", () => {
-            imageBox.remove;
-            removeFigure(img.id, imageBox);
-            alert("Vous avez bien supprimé votre fichier");
-            window.location.href = 'index.html';
+            removeFigure(img.id);
+            document.getElementById(img.id).remove();
+            imageBox.remove();
         })
         
-    });
+    })
 }
 
 fetch("http://localhost:5678/api/works")
@@ -223,7 +222,7 @@ fetch("http://localhost:5678/api/works")
 
   /// SUPPRIMER UNE IMAGE CÔTÉ BACKEND AU CLICK ///
 
-function removeFigure(imgId, imageBox){
+function removeFigure(imgId){
     fetch(`http://localhost:5678/api/works/${imgId}`, {
         method: 'DELETE',
         headers: {
@@ -234,8 +233,6 @@ function removeFigure(imgId, imageBox){
     .then(response => response.ok)
     .catch(error => console.error("Erreur : Aucune réponse de l'API (POST api/works/ID) lors de la suppression de l'image", error));
 }
-
- 
 
 /// MODALE D'AJOUT IMAGES///
 
