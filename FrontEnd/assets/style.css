@@ -411,12 +411,12 @@ figcaption {
 .figure-modal i {
 	position: absolute;
 	justify-content: flex-end;
-	top: -90px;
+	top: -95px;
 	right: 6px;
 	display: block;
 	background-color: black;
 	color: white;
-	padding: 3px;
+	padding: 4px;
 	border-radius: 5px;
 	font-size: 10px;
 }

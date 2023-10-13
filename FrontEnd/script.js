@@ -200,7 +200,7 @@ function createGalleryModal(images) {
         image.src = img.imageUrl;
         trash.classList.add("fa-solid","fa-trash-can");
         imageBox.append(image, descriptionImg);
-        figureModal.appendChild(imageBox, descriptionImg);
+        figureModal.appendChild(imageBox);
         descriptionImg.appendChild(trash);
             /// SUPPRIMER LES IMAGES DANS LA GALLERY AU CLICK ///
         trash.addEventListener("click", () => {
