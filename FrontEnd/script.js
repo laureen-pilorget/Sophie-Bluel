@@ -137,14 +137,12 @@ const closeModal2 = document.querySelector(".close-modal2");
 
 closeModal1.addEventListener("click", () => {
     modal1.style.display = "none";
-    backgroundModal.style.display = "none";
 })
 
             /// MODALE 2 ///
 
 closeModal2.addEventListener("click", () => {
     modal2.style.display = "none";
-    backgroundModal.style.display = "none";
 })
 
 
@@ -251,7 +249,6 @@ imgUpload.addEventListener('change', function () {
         const imgAdded = document.createElement("img");
         imgAdded.src = imgUrl;
         imgUploadBox.innerHTML = '';
-        console.log(imgUploadBox.innerHTML);
         imgUploadBox.appendChild(imgAdded);
         imgIcon.style.display = "none";
         buttonAddImg.style.display = "none";
@@ -292,15 +289,11 @@ form.addEventListener('submit', async (e) => {
     const title = document.getElementById("title").value;
     let category = document.getElementById("category").value;
     const imgfile = document.getElementById("img-upload").files[0];
-    console.log(imgfile);
-    console.log(category);
-    console.log(title);
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("category", category);
     formData.append("image", imgfile);
-    console.log(formData);
 
         fetch("http://localhost:5678/api/works", {
             method: "POST",
